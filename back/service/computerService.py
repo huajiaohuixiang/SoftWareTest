@@ -27,6 +27,6 @@ class ComService(object):
             peripheral=row['Peripheral']
             commission,sales=commission_atom((host,display,peripheral))
             row['ActualOutput1']=commission
-            row['ActualOutput1']=sales
+            row['ActualOutput2']=sales
             pass
         data.to_csv(r"./csv/com/output.csv")

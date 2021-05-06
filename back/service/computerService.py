@@ -18,15 +18,15 @@ def commission_atom(arg_list):
 class ComService(object):
     def handlerData(self,data):
         print(data)
-        data['ActualOutput2']=data['ExpectedOutput2']
-        data['ActualOutput1']=data['ExpectedOutput1']
-        
+        data['ActualCommission']=data['ExpectedCommission']
+        data['ActualSales']=data['ExpectedSales']
+        data['flag']=data['ExpectedSales']
         for index,row in data.iterrows():
             host=row['Host']
             display=row['Display']
             peripheral=row['Peripheral']
             commission,sales=commission_atom((host,display,peripheral))
-            row['ActualOutput1']=commission
-            row['ActualOutput2']=sales
-            pass
+            data.at[index,'ActualCommission']=sales
+            data.at[index,'ActualSales']=commission
+            data.at[index,'flag']=(sales==row['ExpectedCommission']) and (commission==row['ExpectedSales'])
         data.to_csv(r"./csv/com/output.csv")

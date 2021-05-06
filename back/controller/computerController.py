@@ -20,7 +20,7 @@ class ComCon(Resource):
 @api.response(404, 'Method not found')
 class ComUpload(Resource):
     def post(self):
-        csv_data = pd.read_csv(request.files['file'])
+        csv_data = pd.read_csv(request.files['file'],encoding='gbk')
         print(csv_data)
         ComService.handlerData(ComService,csv_data)
         return 'ok'  

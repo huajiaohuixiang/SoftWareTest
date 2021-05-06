@@ -36,6 +36,7 @@ class CharService:
             row['ActualOutput'] = cost
             pass
         data.to_csv(r"./csv/com/charge.csv")
+        # commit
 
     # def __init__(self):
     #     pass

@@ -22,6 +22,7 @@ class ComCon(Resource):
     @api.doc('download csv2')
     def get(self):
         return send_from_directory("./csv/com/",filename="charge.csv",as_attachment=True)
+    # commit
 
 
 # @api.route('/charge/<method_type>')

@@ -1,6 +1,6 @@
 from flask import Flask,request,send_from_directory
 from flask_restplus import Namespace, Resource, fields
-from back.service.triangleService import TriService
+from service.triangleService import TriService
 import pandas as pd
 from flask_cors import CORS
 

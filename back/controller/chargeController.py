@@ -1,5 +1,5 @@
 from flask_restplus import Namespace, Resource, fields
-from back.service.chargeService import CharService
+from service.chargeService import CharService
 from flask import Flask,request,send_from_directory
 import pandas as pd
 from flask_cors import CORS

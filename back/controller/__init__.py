@@ -1,11 +1,7 @@
 from flask_restplus import Api
-<<<<<<< HEAD
-from back.controller.computerController import api as com_api
-from back.controller.chargeController import api as charge_api
-=======
+from controller.chargeController import api as charge_api
 from controller.triangleController import api as tri_api
 from controller.computerController import api as com_api
->>>>>>> origin/master
 
 api= Api(
     title='Software Testing Visual Platform',

@@ -35,24 +35,4 @@ class CharService:
             cost = commission_atom((monthtalktime, yearunpaidnum, unpaidcostacrossyear))
             row['ActualOutput'] = cost
             pass
-        data.to_csv(r"./csv/com/charge.csv")
-        # commit
-
-    # def __init__(self):
-    #     pass
-    #
-    # @staticmethod
-    # def charge(method_type, code_version='v2'):
-    #     csv_path = charge_index[method_type]
-    #     df, arg_start, arg_end = df_read(csv_path)
-    #     output1 = []
-    #     for i in range(0, len(df)):
-    #         arg_list = df.iloc[i, arg_start:arg_end].values.tolist()
-    #         output1.append(code_v[code_version](arg_list))
-    #     return df_update(df=df, csv_path=csv_path, actual_outputs=[output1], tester_name='anonymous')
-    #
-    # @staticmethod
-    # def charge_method_test(request, code_version='v2'):
-    #     arg_list = [request['talk_time_month'], request['unpaid_num_year'], request['unpaid_cost_across_year'],
-    #                 request['pay_method']]
-    #     return code_v[code_version](arg_list)
+        data.to_csv(r"./csv/charge/output.csv")

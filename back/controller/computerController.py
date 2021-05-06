@@ -1,6 +1,6 @@
 from flask import Flask,request,send_from_directory
 from flask_restplus import Namespace, Resource, fields
-from service.computerService import ComService
+from back.service.computerService import ComService
 import pandas as pd
 from flask_cors import CORS
 

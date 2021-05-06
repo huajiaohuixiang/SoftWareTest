@@ -9,7 +9,7 @@
             <el-upload
                 class="upload-demo"
                 drag
-                action="http://127.0.0.1:5000/upload"
+                :action="upload"
                 >
                 <i class="el-icon-upload"></i>
                 <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -23,7 +23,7 @@
             <div class="content-title">下载测试后数据</div>
             
             <div class="plugins-tips">
-                <a href="http://127.0.0.1:5000/download" target="_blank">点击下载</a>
+                <a :href="download" target="_blank">点击下载</a>
             </div>
 
             <!-- <div class="crop-demo">
@@ -40,6 +40,7 @@
 
 <script>
     import VueCropper  from 'vue-cropperjs';
+import CONST from '../common/CONST.vue';
     export default {
         name: 'upload',
         data: function(){
@@ -49,6 +50,8 @@
                 imgSrc: '',
                 cropImg: '',
                 dialogVisible: false,
+                upload: CONST.url+"/question6/upload",
+                download: CONST.url+"/question6/download"
             }
         },
         components: {

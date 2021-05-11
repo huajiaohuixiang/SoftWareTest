@@ -7,6 +7,7 @@ from flask_cors import CORS
 api = Namespace('question1', description='三角形')
 
 @api.route('/download')
+
 @api.response(404, 'Method not found')
 class TriCon(Resource):
     @api.doc('download csv1')

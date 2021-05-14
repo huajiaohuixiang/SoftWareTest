@@ -25,6 +25,7 @@ export default new Router({
                         import ( /* webpackChunkName: "dashboard" */ '../components/page/calendar.vue'),
                     meta: { title: '万年历问题' }
                 },
+
                 {
                     path: '/charge',
                     component: () =>

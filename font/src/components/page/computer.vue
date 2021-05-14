@@ -36,7 +36,7 @@
         </div>
 
         <div class="container">
-            <el-button type="success" round v-on:click="changeData">获取测试结果</el-button>
+            <el-button type="success" round v-on:click="getAcc">获取测试结果</el-button>
 
             <el-row :gutter="30">
             <el-col :span="22">
@@ -133,6 +133,7 @@ import CONST from '../common/CONST.vue';
                 this.options.datasets[0].data[1]=0.5
 
                 console.log(this.options.datasets[0].data)
+                this.$refs.pie.renderChart();
 
             },
             getAcc(){
@@ -147,7 +148,8 @@ import CONST from '../common/CONST.vue';
                         console.log("a")
                         that.options.datasets[0].data[1]=1-response.data
                         console.log("b")
-                    
+                        that.$refs.pie.renderChart();
+
                 })
                 
 

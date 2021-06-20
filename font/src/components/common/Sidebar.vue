@@ -12,7 +12,7 @@
         >
             <template v-for="item in items">
                 <template v-if="item.subs">
-                    <el-submenu :index="item.index" :key="item.index">
+                    <el-submenu :index="item.index" :key="item.index" >
                         <template slot="title">
                             <i :class="item.icon"></i>
                             <span slot="title">{{ item.title }}</span>
@@ -28,13 +28,16 @@
                                     v-for="(threeItem,i) in subItem.subs"
                                     :key="i"
                                     :index="threeItem.index"
+                                    v-on:click="changeProject()"
                                 >{{ threeItem.title }}</el-menu-item>
                             </el-submenu>
                             <el-menu-item
                                 v-else
-                                :index="subItem.index"
-                                :key="subItem.index"
+                                
+                                :key="subItem.title"
+                                v-on:click="changeProject(subItem)"
                             >{{ subItem.title }}</el-menu-item>
+                            <!-- :index="subItem.index" -->
                         </template>
                     </el-submenu>
                 </template>
@@ -50,56 +53,61 @@
 </template>
 
 <script>
+import axios from 'axios';
 import bus from '../common/bus';
+import CONST from '../common/CONST.vue';
+
 export default {
     data() {
         return {
             collapse: false,
             items: [
-               
-                {
-                    icon: 'el-icon-lx-home',
-                    index: 'triangle',
-                    title: '三角形类型判定'
-                },
-                {
-                    icon: 'el-icon-lx-cascades',
-                    index: 'discussion1',
-                    title: '销售管理讨论题'
-                },
-                {
-                    icon: 'el-icon-lx-copy',
-                    index: 'computer',
-                    title: '电脑销售系统'
-                },
-                {
-                    icon: 'el-icon-lx-emoji',
-                    index: 'discussion2',
-                    title: '电商平台讨论题'
-                },
-                {
-                    icon: 'el-icon-pie-chart',
-                    index: 'projectboundary',
-                    title: '项目边界值测试'
-                },
+             
                 {
                     icon: 'el-icon-lx-global',
-                    index: 'charge',
-                    title: '电信收费问题'
-                },
-                                {
+                    index: '1',
+                    title: '我的项目',
+                    subs: [
+                         {
+                            index: "Project",
+                            title: "电脑"
+                        },
+                        {
+                            index: "Project",
+                            title: "电信"
+                        },
+                    ]
+                }   ,
+                {
                     icon: 'el-icon-lx-global',
-                    index: 'discussion3',
-                    title: 'C/S系统讨论题'
-                },
-                                {
-                    icon: 'el-icon-lx-global',
-                    index: 'calendar',
-                    title: '万年历问题'
+                    index: 'newProject',
+                    title: '添加项目'
                 }
-
             ]
         };
+    },
+    methods: {
+        changeProject(subItem) {
+            console.log(subItem)
+            console.log(this._GLOBAL.project)
+            this._GLOBAL.project=subItem.title
+            this.$router.push( '/' + subItem.title)
+        },
+        getProjectInfo(){
+            var that=this;
+            axios.get(CONST.url+"/project/getAllProject").then(function(response){
+                console.log(response);
+                let subProject=[]
+                for(let i=0;i<response.data.length;i++){
+                    var tempPeoject={};
+                    tempPeoject['title']=response.data[i]
+                    tempPeoject['index']=i;
+                    subProject.push(tempPeoject);
+                }
+                that.items[0].subs=subProject;
+            })
+        }
+
     },
     computed: {
         onRoutes() {
@@ -112,6 +120,7 @@ export default {
             this.collapse = msg;
             bus.$emit('collapse-content', msg);
         });
+        this.getProjectInfo()
     }
 };
 </script>

@@ -14,18 +14,17 @@ export default new Router({
                 import ( /* webpackChunkName: "home" */ '../components/common/Home.vue'),
             meta: { title: '自述文件' },
             children: [{
-                    path: '/triangle',
+                    path: '/newProject',
                     component: () =>
-                        import ( /* webpackChunkName: "dashboard" */ '../components/page/triangle.vue'),
-                    meta: { title: '三角形问题' }
+                        import ( /* webpackChunkName: "dashboard" */ '../components/page/newProject.vue'),
+                    meta: { title: '添加项目' }
                 },
                 {
-                    path: '/calendar',
+                    path: ':projectName',
                     component: () =>
-                        import ( /* webpackChunkName: "dashboard" */ '../components/page/calendar.vue'),
-                    meta: { title: '万年历问题' }
+                        import ( /* webpackChunkName: "dashboard" */ '../components/page/Project.vue'),
+                    meta: { title: '我的项目' }
                 },
-
                 {
                     path: '/charge',
                     component: () =>

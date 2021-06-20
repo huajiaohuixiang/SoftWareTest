@@ -1,4 +1,4 @@
-TestCaseID,MonthTalkTime,YearUnpaidNum,UnpaidCostAcrossYear,ExpectedOutput
+TestCaseID,talk_time_month,unpaid_num_year,unpaid_cost_across_year,cost
 1,1,0,0,25.1485
 2,2,0,0,25.297
 3,22320,0,0,3272.56

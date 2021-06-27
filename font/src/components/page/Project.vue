@@ -1,25 +1,28 @@
 <template>
     <div>
         <div class="container">
-            <div class="content-title">{{projectID}}</div>
-            <el-input type="textarea" rows="5" v-model="funcInfo" :disabled='funcvisi'></el-input>
+            <el-dropdown @command="handleCommand">
+                <span class="el-dropdown-link"> 选择项目<i class="el-icon-arrow-down el-icon--right"></i> </span>
+                <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item v-for="(item, i) in allproject" v-bind:key="i" :command="item">{{ item }}</el-dropdown-item>
+                </el-dropdown-menu>
+            </el-dropdown>
+            <div class="content-title">{{ projectID }}</div>
+            <el-input type="textarea" rows="5" v-model="funcInfo" :disabled="funcvisi"></el-input>
         </div>
-        
+
         <div class="container">
             <el-row :gutter="22">
                 <el-col :span="12">
                     <div class="content-title">上传测试用例</div>
 
                     <el-input class="inputSty" placeholder="请输入" v-model="name" :input="refresh">
-                        
                         <template slot="prepend">测试人员姓名</template>
                     </el-input>
                     <el-input class="inputSty" placeholder="请输入" v-model="testmethod" :input="refresh">
-                        
                         <template slot="prepend">测试方法</template>
                     </el-input>
 
-                    
                     <el-button type="success" round v-on:click="refresh">确认</el-button>
 
                     <el-upload class="upload-demo" drag :action="upload" :on-success="accuCallBack">
@@ -55,6 +58,7 @@ export default {
     name: 'upload',
     data: function () {
         return {
+            allproject: [],
             projectID: this._GLOBAL.project,
             funcInfo: '',
             funcvisi: true,
@@ -65,8 +69,8 @@ export default {
             dialogVisible: false,
             name: 'admin',
             testmethod: '边界值测试',
-            upload: CONST.url + '/projecttest/upload/'+this._GLOBAL.project+'/' ,
-            download: CONST.url + '/projecttest/download/'+this._GLOBAL.project+'/' ,
+            upload: CONST.url + '/projecttest/upload/' + this._GLOBAL.project + '/',
+            download: CONST.url + '/projecttest/download/' + this._GLOBAL.project + '/',
             options: {
                 type: 'pie',
                 title: {
@@ -92,17 +96,18 @@ export default {
     },
     watch: {
         // 若路由路径变化，从全局变量刷新 projectID
-        $route () {
-            this.projectID = this._GLOBAL.project;
-            this.getProFunc();
-        },
-            
+        // $route() {
+        //     this.projectID = this._GLOBAL.project;
+        //     this.getProFunc();
+        //     this.refresh();
+        // }
     },
     created() {
         this.cropImg = this.defaultSrc;
         this.upload = this.upload + this.name + '/' + this.testmethod;
         this.download = this.download + this.name + '/' + this.testmethod;
         this.handleListener();
+        this.getProjectInfo()
     },
     activated() {
         this.handleListener();
@@ -112,23 +117,38 @@ export default {
         bus.$off('collapse', this.handleBus);
     },
     methods: {
-        accuCallBack(response, file, fileList){
-            console.log(response)
+        handleCommand(command) {
+            let that = this;
+            this.getProFunc(command)
+            this.projectID=command
+            this.refresh()
+        },
+        getProjectInfo() {
+            var that = this;
+            axios.get(CONST.url + '/project/getAllProject').then(function (response) {
+                console.log(response);
+                that.allproject=response.data
+            });
+        },
+
+        accuCallBack(response, file, fileList) {
+            console.log(response);
             this.options.datasets[0].data[0] = response;
             this.options.datasets[0].data[1] = 1 - response;
             this.$refs.pie.renderChart();
-            console.log("a")
+            console.log('a');
         },
-        getProFunc(){
-            var that=this;
-            axios.get(CONST.url+'/project/getProjectFunc/'+this._GLOBAL.project).then(function(response){
-                console.log(response.data)
-                that.funcInfo=response.data;
-            })
+        getProFunc(name) {
+            var that = this;
+            axios.get(CONST.url + '/project/getProjectFunc/' + name).then(function (response) {
+                console.log(response.data);
+                that.funcInfo = response.data;
+            });
         },
-        refresh() { //刷新URL
-            this.upload = CONST.url + '/projecttest/upload/'+this.projectID+'/' + this.name + '/' + this.testmethod;
-            this.download = CONST.url + '/projecttest/download/'+this.projectID+'/' + this.name + '/' + this.testmethod;
+        refresh() {
+            //刷新URL
+            this.upload = CONST.url + '/projecttest/upload/' + this.projectID + '/' + this.name + '/' + this.testmethod;
+            this.download = CONST.url + '/projecttest/download/' + this.projectID + '/' + this.name + '/' + this.testmethod;
             console.log(this.upload);
             console.log(this.download);
             return true;
@@ -141,7 +161,8 @@ export default {
             console.log(this.options.datasets[0].data);
             this.$refs.pie.renderChart();
         },
-        getAcc() {//获得准确率
+        getAcc() {
+            //获得准确率
             var that = this;
             var temp;
             axios.get(CONST.url + '/question2/getAccuracy/' + this.name + '/' + this.testmethod).then(function (response) {
@@ -174,6 +195,13 @@ export default {
 </script>
 
 <style scoped>
+  .el-dropdown-link {
+    cursor: pointer;
+    color: #409EFF;
+  }
+  .el-icon-arrow-down {
+    font-size: 12px;
+  }
 .inputSty {
     width: 250px;
 }

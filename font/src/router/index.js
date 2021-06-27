@@ -6,7 +6,7 @@ Vue.use(Router);
 export default new Router({
     routes: [{
             path: '/',
-            redirect: '/triangle'
+            redirect: '/newProject'
         },
         {
             path: '/',
@@ -20,7 +20,13 @@ export default new Router({
                     meta: { title: '添加项目' }
                 },
                 {
-                    path: ':projectName',
+                    path: '/JavaProject',
+                    component: () =>
+                        import ( /* webpackChunkName: "dashboard" */ '../components/page/JavaProject.vue'),
+                    meta: { title: '我的测试项目' }
+                },
+                {
+                    path: '/project',
                     component: () =>
                         import ( /* webpackChunkName: "dashboard" */ '../components/page/Project.vue'),
                     meta: { title: '我的项目' }

@@ -5,3 +5,5 @@ hanhan;lalala;['a', 'b', 'c'];['d']
 ComputerSales;commission_atom;['host_num', 'display_num', 'peripheral_num'];['sales', 'commission']
 Triangle;triangle_atom;['a', 'b', 'c'];['type']
 Charge;charge;['talk_time_month', 'unpaid_num_year', 'unpaid_cost_across_year'];['cost']
+test_triangle_atom;test_triangle_atom;['a', 'b', 'c'];['type']
+

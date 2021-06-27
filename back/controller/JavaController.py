@@ -1,3 +1,4 @@
+import os
 from flask import Flask,request,send_from_directory
 from flask_restplus import Namespace, Resource, fields
 from service.JavaProjectService import JavaProjectService
@@ -31,6 +32,8 @@ class TestServiceController(Resource):
     @api.doc('对某个类进行测试')
     def post(self,projectname, name):  
         print(name)  
-        r = subprocess.run(' java -jar '+'./JavaProject/'+projectname+'/target/meethere-0.0.1-SNAPSHOT-fat-tests.jar'+' com.meethere.testService.'+name[0:len(name)-6]+'\n'  ,shell=True)
-        print(r.returncode)
+        cmd=' java -jar '+'./JavaProject/'+projectname+'/target/meethere-0.0.1-SNAPSHOT-fat-tests.jar'+' com.meethere.testService.'+name[0:len(name)-5]+'Test'
+        print(cmd)
+        r = os.popen(cmd)
+        print(r.read())
         return name

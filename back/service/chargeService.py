@@ -2,7 +2,7 @@ import datetime
 import os
 
 
-def commission_atom(arg_list):
+def charge_problem(arg_list):
     monthly_fee, cost_per_min = 25, 0.15
     talk_time_month, unpaid_num_year = \
         arg_list[0], arg_list[1]

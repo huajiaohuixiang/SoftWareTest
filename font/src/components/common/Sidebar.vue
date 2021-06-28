@@ -82,7 +82,42 @@ export default {
                     index: 'JavaProject',
                     title: '我的测试项目',
                     
-                }   ,
+                }   ,{
+                    icon: 'el-icon-lx-global',
+                    index: 'a',
+                    title: 'problem2',
+                }  ,{
+                    icon: 'el-icon-lx-global',
+                    index: 'b',
+                    title: 'problem4',
+                }  ,{
+                    icon: 'el-icon-lx-global',
+                    index: 'c',
+                    title: 'problem5',
+                }  ,{
+                    icon: 'el-icon-lx-global',
+                    index: 'd',
+                    title: 'problem7',
+                }  ,{
+                    icon: 'el-icon-lx-global',
+                    index: 'e',
+                    title: 'problem9',
+                }  ,
+                {
+                    icon: 'el-icon-lx-global',
+                    index: 'f',
+                    title: 'problem10',
+                }  ,
+                {
+                    icon: 'el-icon-lx-global',
+                    index: 'g',
+                    title: 'problem12',
+                }  ,
+                {
+                    icon: 'el-icon-lx-global',
+                    index: 'h',
+                    title: 'problem13',
+                },
             ]
         };
     },

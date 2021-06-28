@@ -66,7 +66,47 @@ export default new Router({
                     component: () =>
                         import ( /* webpackChunkName: "dashboard" */ '../components/page/discussion3.vue'),
                     meta: { title: '讨论题7' }
-                }
+                }, {
+                    path: '/a',
+                    component: () =>
+                        import ( /* webpackChunkName: "dashboard" */ '../components/page/problem2.vue'),
+                    meta: { title: 'problem2' }
+                }, {
+                    path: '/b',
+                    component: () =>
+                        import ( /* webpackChunkName: "dashboard" */ '../components/page/problem4.vue'),
+                    meta: { title: 'problem4' }
+                }, {
+                    path: '/c',
+                    component: () =>
+                        import ( /* webpackChunkName: "dashboard" */ '../components/page/problem5.vue'),
+                    meta: { title: 'problem5' }
+                }, {
+                    path: '/d',
+                    component: () =>
+                        import ( /* webpackChunkName: "dashboard" */ '../components/page/problem7.vue'),
+                    meta: { title: 'problem7' }
+                },{
+                    path: '/e',
+                    component: () =>
+                        import ( /* webpackChunkName: "dashboard" */ '../components/page/problem9.vue'),
+                    meta: { title: 'problem9' }
+                },{
+                    path: '/f',
+                    component: () =>
+                        import ( /* webpackChunkName: "dashboard" */ '../components/page/problem10.vue'),
+                    meta: { title: 'problem10' }
+                },{
+                    path: '/g',
+                    component: () =>
+                        import ( /* webpackChunkName: "dashboard" */ '../components/page/problem12.vue'),
+                    meta: { title: 'problem12' }
+                },{
+                    path: '/h',
+                    component: () =>
+                        import ( /* webpackChunkName: "dashboard" */ '../components/page/problem13.vue'),
+                    meta: { title: 'problem13' }
+                },
             ]
         },
 

@@ -99,10 +99,15 @@ export default new Router({
                 },{
                     path: '/g',
                     component: () =>
+                        import ( /* webpackChunkName: "dashboard" */ '../components/page/problem11.vue'),
+                    meta: { title: 'problem11' }
+                },{
+                    path: '/h',
+                    component: () =>
                         import ( /* webpackChunkName: "dashboard" */ '../components/page/problem12.vue'),
                     meta: { title: 'problem12' }
                 },{
-                    path: '/h',
+                    path: '/i',
                     component: () =>
                         import ( /* webpackChunkName: "dashboard" */ '../components/page/problem13.vue'),
                     meta: { title: 'problem13' }

@@ -111,11 +111,16 @@ export default {
                 {
                     icon: 'el-icon-lx-global',
                     index: 'g',
-                    title: 'problem12',
+                    title: 'problem11',
                 }  ,
                 {
                     icon: 'el-icon-lx-global',
                     index: 'h',
+                    title: 'problem12',
+                }  ,
+                {
+                    icon: 'el-icon-lx-global',
+                    index: 'i',
                     title: 'problem13',
                 },
             ]

@@ -6,7 +6,7 @@
         &#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288; transition tree<br>
         <img src="../../assets/img/state.png"/>
         <img src="../../assets/img/transitionTree.png"/><br>
-        测试用例根据状态转移条件类似，在transition tree种，考虑了密码错误等robustness。
+        测试用例根据状态转移条件类似，在transition tree种，考虑了密码错误，处理业务错误命令，未取卡等robustness。
 
     </div>
 </template>

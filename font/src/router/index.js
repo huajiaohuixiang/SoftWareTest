@@ -76,12 +76,7 @@ export default new Router({
                     component: () =>
                         import ( /* webpackChunkName: "dashboard" */ '../components/page/problem4.vue'),
                     meta: { title: 'problem4' }
-                }, {
-                    path: '/c',
-                    component: () =>
-                        import ( /* webpackChunkName: "dashboard" */ '../components/page/problem5.vue'),
-                    meta: { title: 'problem5' }
-                }, {
+                },  {
                     path: '/d',
                     component: () =>
                         import ( /* webpackChunkName: "dashboard" */ '../components/page/problem7.vue'),

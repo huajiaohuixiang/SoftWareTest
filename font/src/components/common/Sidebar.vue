@@ -92,10 +92,6 @@ export default {
                     title: 'problem4',
                 }  ,{
                     icon: 'el-icon-lx-global',
-                    index: 'c',
-                    title: 'problem5',
-                }  ,{
-                    icon: 'el-icon-lx-global',
                     index: 'd',
                     title: 'problem7',
                 }  ,{
